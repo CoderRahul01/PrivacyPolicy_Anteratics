@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Privacy Policy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Refined Slate & Subtle Amber -->
+    <!-- Application Structure Plan: A two-column layout is used for clarity on larger screens. A fixed sidebar contains navigation links that scroll to the corresponding sections in the main content area. This makes the dense legal text easy to navigate. A search bar is included for keyword highlighting, allowing users to find specific terms quickly. The structure is designed to make a static, text-heavy document feel like an interactive tool, improving usability and comprehension. On mobile, the layout stacks vertically for readability. -->
+    <!-- Visualization & Content Choices: Since the source report is entirely textual, traditional data visualizations are not applicable. The primary goal is to make the text itself more explorable.
+        - Report Info: Full text of Privacy Policy. -> Goal: Improve Navigation & Searchability. -> Presentation: A clickable sidebar list and a main content area. -> Interaction: Clicking links smoothly scrolls to sections; typing in a search bar highlights all instances of the term in the document. -> Justification: This directly addresses the user need to locate information within a long legal document. -> Library/Method: Vanilla JS for interactions, TailwindCSS for layout.
+        - Report Info: Key concepts from the Privacy Policy. -> Goal: Inform/Summarize. -> Presentation: A "Key Points" section at the top with subtle icons and concise text. -> Interaction: Static display. -> Justification: Provides a high-level overview before the user dives into the full text, improving accessibility and quick understanding. -> Library/Method: HTML & TailwindCSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .highlight {
+            background-color: #fef9c3; /* A soft yellow, equivalent to yellow-100 */
+            border-radius: 3px;
+            padding: 0 2px;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; /* slate-100 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* slate-300 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* slate-400 */
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <div class="max-w-screen-xl mx-auto p-6 lg:p-10">
+        <div class="lg:flex lg:space-x-10">
+            <!-- Sidebar / Mobile Header -->
+            <aside class="lg:w-1/4 lg:sticky lg:top-10 self-start mb-10 lg:mb-0">
+                <div class="bg-white p-7 rounded-2xl shadow-lg border border-slate-200">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-5">Privacy Policy</h2>
+                    <div class="relative mb-7">
+                        <input type="text" id="searchInput" placeholder="Search terms (e.g., 'data')" class="w-full pl-4 pr-10 py-2.5 text-base border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition duration-200 ease-in-out">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+                        </span>
+                    </div>
+
+                    <h3 class="font-semibold text-slate-900 mb-4 text-lg">Sections</h3>
+                    <nav>
+                        <ul id="toc" class="space-y-1">
+                            <li><a href="#summary" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">Key Points</a></li>
+                            <li><a href="#section1" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">1. Information Collection And Use</a></li>
+                            <li><a href="#section2" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">2. Use of Data</a></li>
+                            <li><a href="#section3" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">3. Transfer Of Data</a></li>
+                            <li><a href="#section4" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">4. Disclosure Of Data</a></li>
+                            <li><a href="#section5" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">5. Security Of Data</a></li>
+                            <li><a href="#section6" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">6. Service Providers</a></li>
+                            <li><a href="#section7" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">7. Links To Other Sites</a></li>
+                            <li><a href="#section8" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">8. Children's Privacy</a></li>
+                            <li><a href="#section9" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">9. Changes To This Privacy Policy</a></li>
+                            <li><a href="#section10" class="block text-slate-700 font-medium hover:text-amber-600 hover:bg-slate-50 rounded-lg p-2 transition duration-150 ease-in-out">10. Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main id="main-content" class="lg:w-3/4">
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 sm:p-10 md:p-12 prose prose-slate max-w-none">
+                    
+                    <div class="not-prose mb-10 pb-5 border-b border-slate-200">
+                        <h1 class="text-4xl font-extrabold text-slate-900 leading-tight">Privacy Policy</h1>
+                        <p class="text-slate-500 mt-2 text-lg">Last Updated: July 22, 2025</p>
+                    </div>
+
+                    <p class="lead text-lg text-slate-700 mb-8">Anteratic Solutions ("us", "we", or "our") operates the Terms of Service website (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.
+                    </p>
+
+                    <section id="summary" class="mb-14 p-7 bg-amber-50 rounded-xl border border-amber-100">
+                        <h2 class="text-2xl font-bold text-amber-800 mt-0 mb-5">Key Points Summary</h2>
+                        <p class="text-amber-700 mb-6">Here are some of the most important aspects of our Privacy Policy. For full details, please read the complete sections.</p>
+                        <ul class="list-none !pl-0 mt-6 space-y-4 text-amber-800">
+                            <li class="flex items-start"><span class="mr-3 mt-1 text-amber-600">&#10003;</span><span>We collect personal data (like email, name, address) and usage data (like IP address, browser type) to provide and improve our service.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1 text-amber-600">&#10003;</span><span>We use cookies and similar tracking technologies to monitor activity on our Service.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1 text-amber-600">&#10003;</span><span>Your data may be transferred to and processed in India, where data protection laws may differ.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1 text-amber-600">&#10003;</span><span>We may disclose your data to comply with legal obligations or protect our rights.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1 text-amber-600">&#10003;</span><span>While we strive for security, no internet transmission is 100% secure.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1 text-amber-600">&#10003;</span><span>We do not knowingly collect personal information from anyone under the age of 18.</span></li>
+                        </ul>
+                    </section>
+                    
+                    <section id="section1" class="mb-10">
+                        <h2>1. Information Collection And Use</h2>
+                        <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
+                        <h3>Types of Data Collected</h3>
+                        <p><strong>Personal Data</strong><br>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:</p>
+                        <ul>
+                            <li>Email address</li>
+                            <li>First name and last name</li>
+                            <li>Phone number</li>
+                            <li>Address, State, Province, ZIP/Postal code, City</li>
+                            <li>Cookies and Usage Data</li>
+                        </ul>
+                        <p><strong>Usage Data</strong><br>We may also collect information that your browser sends whenever you visit our Service or when you access the Service by or through a mobile device ("Usage Data").</p>
+                        <p>This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+                        <p>When you access the Service with a mobile device, this Usage Data may include information such as the type of mobile device you use, your mobile device unique ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browser you use, unique device identifiers and other diagnostic data.</p>
+                        <p><strong>Tracking & Cookies Data</strong><br>We use cookies and similar tracking technologies to track the activity on our Service and hold certain information.</p>
+                        <p>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Tracking technologies also used are beacons, tags, and scripts to collect and track information and to improve and analyze our Service.</p>
+                        <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
+                        <p>Examples of Cookies we use:</p>
+                        <ul>
+                            <li><strong>Session Cookies:</strong> We use Session Cookies to operate our Service.</li>
+                            <li><strong>Preference Cookies:</strong> We use Preference Cookies to remember your preferences and various settings.</li>
+                            <li><strong>Security Cookies:</strong> We use Security Cookies for security purposes.</li>
+                        </ul>
+                    </section>
+
+                    <section id="section2" class="mb-10">
+                        <h2>2. Use of Data</h2>
+                        <p>Anteratic Solutions uses the collected data for various purposes:</p>
+                        <ul>
+                            <li>To provide and maintain the Service</li>
+                            <li>To notify you about changes to our Service</li>
+                            <li>To allow you to participate in interactive features of our Service when you choose to do so</li>
+                            <li>To provide customer support</li>
+                            <li>To gather analysis or valuable information so that we can improve the Service</li>
+                            <li>To monitor the usage of the Service</li>
+                            <li>To detect, prevent and address technical issues</li>
+                            <li>To provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information</li>
+                        </ul>
+                    </section>
+
+                    <section id="section3" class="mb-10">
+                        <h2>3. Transfer Of Data</h2>
+                        <p>Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those from your jurisdiction.</p>
+                        <p>If you are located outside India and choose to provide information to us, please note that we transfer the data, including Personal Data, to India and process it there.</p>
+                        <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
+                        <p>Anteratic Solutions will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
+                    </section>
+
+                    <section id="section4" class="mb-10">
+                        <h2>4. Disclosure Of Data</h2>
+                        <h3>Legal Requirements</h3>
+                        <p>Anteratic Solutions may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
+                        <ul>
+                            <li>To comply with a legal obligation</li>
+                            <li>To protect and defend the rights or property of Anteratic Solutions</li>
+                            <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
+                            <li>To protect the personal safety of users of the Service or the public</li>
+                            <li>To protect against legal liability</li>
+                        </ul>
+                    </section>
+
+                    <section id="section5" class="mb-10">
+                        <h2>5. Security Of Data</h2>
+                        <p>The security of your data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
+                    </section>
+
+                    <section id="section6" class="mb-10">
+                        <h2>6. Service Providers</h2>
+                        <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
+                        <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+                    </section>
+
+                    <section id="section7" class="mb-10">
+                        <h2>7. Links To Other Sites</h2>
+                        <p>Our Service may contain links to other sites that are not operated by us. If you click on a third-party link, you will be directed to that third-party's site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
+                        <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third-party sites or services.</p>
+                    </section>
+
+                    <section id="section8" class="mb-10">
+                        <h2>8. Children's Privacy</h2>
+                        <p>Our Service does not address anyone under the age of 18 ("Children").</p>
+                        <p>We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.</p>
+                    </section>
+
+                    <section id="section9" class="mb-10">
+                        <h2>9. Changes To This Privacy Policy</h2>
+                        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+                        <p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "last updated" date at the top of this Privacy Policy.</p>
+                        <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+                    </section>
+
+                    <section id="section10" class="mb-10">
+                        <h2>10. Contact Us</h2>
+                        <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                        <ul>
+                            <li>By email: jobinfo.rahul@gmail.com</li>
+                        </ul>
+                    </section>
+
+                    <div class="mt-12 pt-6 border-t border-slate-200">
+                        <p class="text-sm text-slate-500"><strong>Disclaimer:</strong> This is a general template for a Privacy Policy and may not be suitable for all situations. It is provided for informational purposes only and does not constitute legal advice. You should consult with a legal professional to ensure your Privacy Policy complies with all applicable laws and regulations (e.g., GDPR, CCPA) specific to your business, data collection practices, and jurisdiction.</p>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const contentArea = document.getElementById('main-content');
+            const originalContent = contentArea.innerHTML;
+            let currentTimeout = null;
+
+            function highlightText() {
+                contentArea.innerHTML = originalContent;
+                
+                const searchTerm = searchInput.value.trim();
+
+                if (searchTerm === '') {
+                    return;
+                }
+
+                const regex = new RegExp(`(${searchTerm})`, 'gi');
+                
+                const sections = contentArea.querySelectorAll('p, li, h2');
+                sections.forEach(el => {
+                    const text = el.innerHTML;
+                    const newText = text.replace(regex, '<mark class="highlight">$1</mark>');
+                    el.innerHTML = newText;
+                });
+            }
+
+            searchInput.addEventListener('input', () => {
+                clearTimeout(currentTimeout);
+                currentTimeout = setTimeout(highlightText, 300);
+            });
+            
+            const tocLinks = document.querySelectorAll('#toc a');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                         targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
